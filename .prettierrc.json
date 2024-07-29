@@ -1,0 +1,11 @@
+{
+    "tabWidth": 3,
+
+    "singleQuote": true,
+
+    "semi": false,
+
+    "bracketSameLine": true,
+
+    "bracketSpacing": true
+}
