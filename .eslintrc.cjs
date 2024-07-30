@@ -20,5 +20,6 @@ module.exports = {
       'react/prop-types': 0,
       'react/display-name': 'off',
       'react/no-children-prop': 'off',
+      'no-case-declarations': 'off',
    },
 }
