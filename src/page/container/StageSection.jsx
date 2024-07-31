@@ -18,8 +18,13 @@ const StageSection = ({
 }) => {
    return !_.isEmpty(stages)
       ? stages.map((stage, stageIdx) => (
-           <div className="row mb-4" key={stageIdx}>
-              <div className="offset-1 col-10 mb-4">
+           <div
+              key={stageIdx}
+              className={'row ' + (_.isEmpty(stage.tasks) ? 'mb-4' : '')}>
+              <div
+                 className={
+                    'offset-1 col-10 ' + (!_.isEmpty(stage.tasks) ? 'mb-4' : '')
+                 }>
                  <MainForm
                     formRequest={stage}
                     names={{

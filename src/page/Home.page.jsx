@@ -102,8 +102,16 @@ const HomePage = () => {
                {!_.isEmpty(state.sites) ? (
                   <>
                      {state.sites.map((site, idx) => (
-                        <div className="row mb-4" key={idx}>
-                           <div className="col-12 mb-4">
+                        <div
+                           key={idx}
+                           className={
+                              'row ' + (_.isEmpty(site.stages) ? 'mb-4' : '')
+                           }>
+                           <div
+                              className={
+                                 'col-12 ' +
+                                 (!_.isEmpty(site.stages) ? 'mb-4' : '')
+                              }>
                               <MainForm
                                  formRequest={site}
                                  names={{
@@ -139,7 +147,9 @@ const HomePage = () => {
                         </div>
                      ))}
 
-                     <button type="submit" className="btn btn-primary btn-sm">
+                     <button
+                        type="submit"
+                        className="btn btn-primary btn-sm mt-4">
                         Submit
                      </button>
                   </>

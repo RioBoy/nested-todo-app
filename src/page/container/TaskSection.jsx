@@ -9,8 +9,13 @@ const TaskSection = ({
 }) => {
    return !_.isEmpty(tasks)
       ? tasks.map((task, taskIdx) => (
-           <div className="row mb-4" key={taskIdx}>
-              <div className="offset-2 col-8">
+           <div
+              key={taskIdx}
+              className={'row ' + (_.isEmpty(tasks) ? 'mb-4' : '')}>
+              <div
+                 className={
+                    'offset-2 col-8 ' + (!_.isEmpty(tasks) ? 'mb-4' : '')
+                 }>
                  <MainForm
                     formRequest={task}
                     names={{
