@@ -1,30 +1,30 @@
-import { mainReducerForm } from '@/param/main.param'
-import _ from 'lodash'
+import { updateNestedProperty } from '@/helper/nestedForm.helper'
+import {
+   ADD_SITE,
+   ADD_STAGE,
+   ADD_TASK,
+   CHANGE_INPUT,
+   REMOVE_SITE,
+   REMOVE_STAGE,
+   REMOVE_TASK,
+} from './type'
 
-export const INITIAL_STATE = { ...mainReducerForm }
-
-const updateNestedProperty = (obj, path, value) => {
-   const newObj = _.cloneDeep(obj)
-   _.set(newObj, path, value)
-   return newObj
-}
-
-const formReducer = (state, action) => {
+export const formReducer = (state, action) => {
    switch (action.type) {
-      case 'CHANGE_INPUT':
+      case CHANGE_INPUT:
          const { name, value } = action.payload
          return updateNestedProperty(state, name, value)
-      case 'ADD_SITE':
+      case ADD_SITE:
          return {
             ...state,
             sites: [...state.sites, action.payload],
          }
-      case 'REMOVE_SITE':
+      case REMOVE_SITE:
          return {
             ...state,
             sites: state.sites.filter((_, idx) => idx !== action.payload),
          }
-      case 'ADD_STAGE':
+      case ADD_STAGE:
          const { siteIndex, newStage } = action.payload
 
          return {
@@ -39,7 +39,7 @@ const formReducer = (state, action) => {
                return site
             }),
          }
-      case 'REMOVE_STAGE':
+      case REMOVE_STAGE:
          const { siteIdx: sIdx, stageIdx } = action.payload
 
          return {
@@ -56,7 +56,7 @@ const formReducer = (state, action) => {
                return site
             }),
          }
-      case 'ADD_TASK':
+      case ADD_TASK:
          const { siteIdx, stgIdx, newTask } = action.payload
 
          return {
@@ -79,7 +79,7 @@ const formReducer = (state, action) => {
                return site
             }),
          }
-      case 'REMOVE_TASK':
+      case REMOVE_TASK:
          const { siteIndex: sIndex, stageIndex, taskIndex } = action.payload
 
          return {
@@ -108,5 +108,3 @@ const formReducer = (state, action) => {
          return state
    }
 }
-
-export default formReducer
