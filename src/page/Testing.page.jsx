@@ -98,8 +98,16 @@ const TestingPage = () => {
                {!_.isEmpty(state.sites) ? (
                   <>
                      {state.sites.map((site, idxSite) => (
-                        <div key={idxSite} className="row mb-4">
-                           <div className="col-12 mb-4">
+                        <div
+                           key={idxSite}
+                           className={
+                              'row ' + (_.isEmpty(site.stages) ? 'mb-4' : '')
+                           }>
+                           <div
+                              className={
+                                 'col-12 ' +
+                                 (!_.isEmpty(site.stages) ? 'mb-4' : '')
+                              }>
                               <div className="row mb-3">
                                  <div className="col">
                                     <FormInput
@@ -147,8 +155,19 @@ const TestingPage = () => {
                            {!_.isEmpty(site.stages) ? (
                               <>
                                  {site.stages.map((stage, idxStg) => (
-                                    <div key={idxStg} className="row mb-4">
-                                       <div className="offset-1 col-10 mb-4">
+                                    <div
+                                       key={idxStg}
+                                       className={
+                                          'row ' +
+                                          (_.isEmpty(stage.tasks) ? 'mb-4' : '')
+                                       }>
+                                       <div
+                                          className={
+                                             'offset-1 col-10 ' +
+                                             (!_.isEmpty(stage.tasks)
+                                                ? 'mb-4'
+                                                : '')
+                                          }>
                                           <div className="row mb-3">
                                              <div className="col">
                                                 <FormInput
@@ -217,8 +236,21 @@ const TestingPage = () => {
                                                 (task, idxTsk) => (
                                                    <div
                                                       key={idxTsk}
-                                                      className="row mb-4">
-                                                      <div className="offset-2 col-8 mb-4">
+                                                      className={
+                                                         'row ' +
+                                                         (_.isEmpty(stage.tasks)
+                                                            ? 'mb-4'
+                                                            : '')
+                                                      }>
+                                                      <div
+                                                         className={
+                                                            'offset-2 col-8 ' +
+                                                            (!_.isEmpty(
+                                                               stage.tasks
+                                                            )
+                                                               ? 'mb-4'
+                                                               : '')
+                                                         }>
                                                          <div className="row mb-3">
                                                             <div className="col">
                                                                <FormInput
@@ -289,12 +321,12 @@ const TestingPage = () => {
                            ) : null}
                         </div>
                      ))}
+
+                     <button type="submit" className="btn btn-primary btn-sm">
+                        Submit
+                     </button>
                   </>
                ) : null}
-
-               <button type="submit" className="btn btn-primary btn-sm">
-                  Submit
-               </button>
             </form>
          </div>
       </div>
